@@ -58,7 +58,7 @@ class ActionRPCService(ActionServiceBase, ResourceRPCServiceBase):
         name = request.name
         service = self.get_resource(name)
         resp = await service.is_running()
-        await stream.send_message(IsRunningResponse(text=resp))
+        await stream.send_message(IsRunningResponse(running=resp))
 
     async def Status(self, stream: Stream[StatusRequest, StatusResponse]) -> None:
         request = await stream.recv_message()
@@ -66,7 +66,7 @@ class ActionRPCService(ActionServiceBase, ResourceRPCServiceBase):
         name = request.name
         service = self.get_resource(name)
         resp = await service.status()
-        await stream.send_message(StatusResponse(text=resp))
+        await stream.send_message(StatusResponse(status=resp))
 
 class ActionClient(Action):
 
@@ -88,7 +88,7 @@ class ActionClient(Action):
     async def is_running(self) -> str:
         request = IsRunningRequest(name=self.name)
         response: IsRunningResponse = await self.client.IsRunning(request)
-        return response.text
+        return response.running
     
     async def status(self) -> str:
         request = StatusRequest(name=self.name)

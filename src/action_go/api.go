@@ -47,6 +47,9 @@ func init() {
 type Action interface {
 	resource.Resource
 	Start(ctx context.Context) error
+	Stop(ctx context.Context) error
+	IsRunning(ctx context.Context) (bool, error)
+	Status(ctx context.Context) ([]*pb.Status, error)
 }
 
 // serviceServer implements the Action RPC service from action.proto.
@@ -70,6 +73,42 @@ func (s *serviceServer) Start(ctx context.Context, req *pb.StartRequest) (*pb.St
 		return nil, err
 	}
 	return &pb.StartResponse{}, nil
+}
+
+func (s *serviceServer) Stop(ctx context.Context, req *pb.StopRequest) (*pb.StopResponse, error) {
+	g, err := s.coll.Resource(req.Name)
+	if err != nil {
+		return nil, err
+	}
+	err = g.Stop(ctx)
+	if err != nil {
+		return nil, err
+	}
+	return &pb.StopResponse{}, nil
+}
+
+func (s *serviceServer) IsRunning(ctx context.Context, req *pb.IsRunningRequest) (*pb.IsRunningResponse, error) {
+	g, err := s.coll.Resource(req.Name)
+	if err != nil {
+		return nil, err
+	}
+	resp, err := g.IsRunning(ctx)
+	if err != nil {
+		return nil, err
+	}
+	return &pb.IsRunningResponse{Running: resp}, nil
+}
+
+func (s *serviceServer) Status(ctx context.Context, req *pb.StatusRequest) (*pb.StatusResponse, error) {
+	g, err := s.coll.Resource(req.Name)
+	if err != nil {
+		return nil, err
+	}
+	resp, err := g.Status(ctx)
+	if err != nil {
+		return nil, err
+	}
+	return &pb.StatusResponse{Status: resp}, nil
 }
 
 // NewClientFromConn creates a new Action RPC client from an existing connection.
@@ -114,4 +153,34 @@ func (c *client) Start(ctx context.Context) error {
 		return err
 	}
 	return nil
+}
+
+func (c *client) Stop(ctx context.Context) error {
+	_, err := c.client.Stop(ctx, &pb.StopRequest{
+		Name: c.name,
+	})
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+func (c *client) IsRunning(ctx context.Context) (bool, error) {
+	resp, err := c.client.IsRunning(ctx, &pb.IsRunningRequest{
+		Name: c.name,
+	})
+	if err != nil {
+		return false, err
+	}
+	return resp.Running, nil
+}
+
+func (c *client) Status(ctx context.Context) ([]*pb.Status, error) {
+	resp, err := c.client.Status(ctx, &pb.StatusRequest{
+		Name: c.name,
+	})
+	if err != nil {
+		return nil, err
+	}
+	return resp.Status, nil
 }

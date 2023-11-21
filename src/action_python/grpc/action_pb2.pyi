@@ -96,14 +96,14 @@ global___IsRunningRequest = IsRunningRequest
 class IsRunningResponse(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
-    BOOL_FIELD_NUMBER: builtins.int
-    bool: builtins.str
+    RUNNING_FIELD_NUMBER: builtins.int
+    running: builtins.bool
     def __init__(
         self,
         *,
-        bool: builtins.str = ...,
+        running: builtins.bool = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["bool", b"bool"]) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["running", b"running"]) -> None: ...
 
 global___IsRunningResponse = IsRunningResponse
 

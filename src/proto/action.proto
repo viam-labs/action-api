@@ -54,7 +54,7 @@ message IsRunningRequest {
 }
 
 message IsRunningResponse {
-  string bool = 1;
+  bool running = 1;
 }
 
 message StatusRequest {
