@@ -1,0 +1,71 @@
+syntax = "proto3";
+
+package viamlabs.services.action.v1;
+
+import "google/api/annotations.proto";
+import "google/protobuf/struct.proto";
+
+option go_package = "./action-api";
+
+service ActionService {
+  rpc Start(StartRequest) returns (StartResponse) {
+    option (google.api.http) = {
+      post: "/acme/api/v1/service/action/{name}/start"
+    };
+  }
+
+  rpc Stop(StopRequest) returns (StopResponse) {
+    option (google.api.http) = {
+      post: "/acme/api/v1/service/action/{name}/stop"
+    };
+  }
+
+  rpc IsRunning(IsRunningRequest) returns (IsRunningResponse) {
+    option (google.api.http) = {
+      post: "/acme/api/v1/service/action/{name}/is_running"
+    };
+  }
+
+  rpc Status(StatusRequest) returns (StatusResponse) {
+    option (google.api.http) = {
+      post: "/acme/api/v1/service/action/{name}/status"
+    };
+  }
+}
+
+message StartRequest {
+  string name = 1;
+}
+
+message StartResponse {
+  string text = 1;
+}
+
+message StopRequest {
+  string name = 1;
+}
+
+message StopResponse {
+  string text = 1;
+}
+
+message IsRunningRequest {
+  string name = 1;
+}
+
+message IsRunningResponse {
+  string bool = 1;
+}
+
+message StatusRequest {
+  string name = 1;
+}
+
+message Status {
+  string name = 1;
+  map<string, google.protobuf.Value> status = 2;
+}
+
+message StatusResponse {
+  repeated Status status = 1;
+}
