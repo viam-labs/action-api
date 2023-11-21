@@ -28,13 +28,13 @@ Get current status for the action.  Different action models will define their re
 
 Because this module uses a custom protobuf-based API, you must include this project in your client code.  One way to do this is to include it in your requirements.txt as follows:
 
-```
+``` txt
 action_api @ git+https://github.com/viam-labs/action-api.git@main
 ```
 
 You can now import and use it in your code as follows:
 
-```
+``` python
 from action_python import Action
 api = Action.from_robot(robot, name="actionModel")
 api.start()

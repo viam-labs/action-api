@@ -1,0 +1,17 @@
+[project]
+name = "action_api"
+version = "0.0.1"
+authors = [
+  { name="Matt Vella", email="mcvella@gmail.com" },
+]
+description = "Viam modular service API that provides action management capabilities"
+readme = "README.md"
+requires-python = ">=3.10"
+
+[tool.poetry]
+packages = [
+  { include = "action_python", from = "src" },
+]
+
+[project.urls]
+"Homepage" = "https://github.com/viam-labs/action-api"
