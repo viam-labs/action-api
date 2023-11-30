@@ -1,5 +1,5 @@
 import abc
-from typing import Final, Sequence
+from typing import Any, Final, Sequence, Mapping
 
 from grpclib.client import Channel
 from grpclib.server import Stream
@@ -7,7 +7,7 @@ from grpclib.server import Stream
 from viam.resource.rpc_service_base import ResourceRPCServiceBase
 from viam.resource.types import RESOURCE_TYPE_SERVICE, Subtype
 from viam.services.service_base import ServiceBase
-from viam.utils import sensor_readings_native_to_value
+from viam.utils import sensor_readings_native_to_value, sensor_readings_value_to_native
 
 from .grpc.action_grpc import ActionServiceBase, ActionServiceStub
 
@@ -91,7 +91,7 @@ class ActionClient(Action):
         response: IsRunningResponse = await self.client.IsRunning(request)
         return response.running
     
-    async def status(self) -> dict:
+    async def status(self) -> Mapping[str, Any]:
         request = StatusRequest(name=self.name)
         response: StatusResponse = await self.client.Status(request)
-        return response.status
+        return sensor_readings_value_to_native(response.status)
