@@ -8,9 +8,9 @@ from viam.resource.rpc_service_base import ResourceRPCServiceBase
 from viam.resource.types import RESOURCE_TYPE_SERVICE, Subtype
 from viam.services.service_base import ServiceBase
 
-from ..proto.action_grpc import ActionServiceBase, ActionServiceStub
+from .grpc.action_grpc import ActionServiceBase, ActionServiceStub
 
-from ..proto.action_pb2 import StartRequest, StartResponse, StopRequest, StopResponse, IsRunningRequest, IsRunningResponse, StatusRequest, StatusResponse
+from .grpc.action_pb2 import StartRequest, StartResponse, StopRequest, StopResponse, IsRunningRequest, IsRunningResponse, StatusRequest, StatusResponse
 
 
 class Action(ServiceBase):
