@@ -61,11 +61,6 @@ message StatusRequest {
   string name = 1;
 }
 
-message Status {
-  string name = 1;
-  map<string, google.protobuf.Value> status = 2;
-}
-
 message StatusResponse {
-  repeated Status status = 1;
+  map<string, google.protobuf.Value> readings = 1;
 }
