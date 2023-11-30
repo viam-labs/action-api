@@ -25,7 +25,7 @@ class Action(ServiceBase):
     async def stop(self) -> str:
         ...
 
-    async def is_running(self) -> str:
+    async def is_running(self) -> bool:
         ...
 
     async def status(self) -> dict:
@@ -35,7 +35,6 @@ class ActionRPCService(ActionServiceBase, ResourceRPCServiceBase):
 
     RESOURCE_TYPE = Action
 
-    # update with actual API methods
     async def Start(self, stream: Stream[StartRequest, StartResponse]) -> None:
         request = await stream.recv_message()
         assert request is not None
@@ -85,12 +84,12 @@ class ActionClient(Action):
         response: StopResponse = await self.client.Stop(request)
         return response.text
     
-    async def is_running(self) -> str:
+    async def is_running(self) -> bool:
         request = IsRunningRequest(name=self.name)
         response: IsRunningResponse = await self.client.IsRunning(request)
         return response.running
     
-    async def status(self) -> str:
+    async def status(self) -> dict:
         request = StatusRequest(name=self.name)
         response: StatusResponse = await self.client.Status(request)
         return response.status
