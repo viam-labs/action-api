@@ -7,6 +7,7 @@ from grpclib.server import Stream
 from viam.resource.rpc_service_base import ResourceRPCServiceBase
 from viam.resource.types import RESOURCE_TYPE_SERVICE, Subtype
 from viam.services.service_base import ServiceBase
+from viam.utils import sensor_readings_native_to_value
 
 from .grpc.action_grpc import ActionServiceBase, ActionServiceStub
 
@@ -65,7 +66,8 @@ class ActionRPCService(ActionServiceBase, ResourceRPCServiceBase):
         name = request.name
         service = self.get_resource(name)
         resp = await service.status()
-        await stream.send_message(StatusResponse(status=resp))
+        
+        await stream.send_message(StatusResponse(status=sensor_readings_native_to_value(resp)))
 
 class ActionClient(Action):
 
