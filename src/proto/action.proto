@@ -62,5 +62,5 @@ message StatusRequest {
 }
 
 message StatusResponse {
-  map<string, google.protobuf.Value> readings = 1;
+  map<string, google.protobuf.Value> status = 1;
 }
