@@ -123,11 +123,11 @@ class StatusRequest(google.protobuf.message.Message):
 global___StatusRequest = StatusRequest
 
 @typing_extensions.final
-class Status(google.protobuf.message.Message):
+class StatusResponse(google.protobuf.message.Message):
     DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
     @typing_extensions.final
-    class StatusEntry(google.protobuf.message.Message):
+    class ReadingsEntry(google.protobuf.message.Message):
         DESCRIPTOR: google.protobuf.descriptor.Descriptor
 
         KEY_FIELD_NUMBER: builtins.int
@@ -144,33 +144,14 @@ class Status(google.protobuf.message.Message):
         def HasField(self, field_name: typing_extensions.Literal["value", b"value"]) -> builtins.bool: ...
         def ClearField(self, field_name: typing_extensions.Literal["key", b"key", "value", b"value"]) -> None: ...
 
-    NAME_FIELD_NUMBER: builtins.int
-    STATUS_FIELD_NUMBER: builtins.int
-    name: builtins.str
+    READINGS_FIELD_NUMBER: builtins.int
     @property
-    def status(self) -> google.protobuf.internal.containers.MessageMap[builtins.str, google.protobuf.struct_pb2.Value]: ...
+    def readings(self) -> google.protobuf.internal.containers.MessageMap[builtins.str, google.protobuf.struct_pb2.Value]: ...
     def __init__(
         self,
         *,
-        name: builtins.str = ...,
-        status: collections.abc.Mapping[builtins.str, google.protobuf.struct_pb2.Value] | None = ...,
+        readings: collections.abc.Mapping[builtins.str, google.protobuf.struct_pb2.Value] | None = ...,
     ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["name", b"name", "status", b"status"]) -> None: ...
-
-global___Status = Status
-
-@typing_extensions.final
-class StatusResponse(google.protobuf.message.Message):
-    DESCRIPTOR: google.protobuf.descriptor.Descriptor
-
-    STATUS_FIELD_NUMBER: builtins.int
-    @property
-    def status(self) -> google.protobuf.internal.containers.RepeatedCompositeFieldContainer[global___Status]: ...
-    def __init__(
-        self,
-        *,
-        status: collections.abc.Iterable[global___Status] | None = ...,
-    ) -> None: ...
-    def ClearField(self, field_name: typing_extensions.Literal["status", b"status"]) -> None: ...
+    def ClearField(self, field_name: typing_extensions.Literal["readings", b"readings"]) -> None: ...
 
 global___StatusResponse = StatusResponse

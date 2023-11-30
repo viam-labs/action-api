@@ -15,7 +15,7 @@ from google.api import annotations_pb2 as google_dot_api_dot_annotations__pb2
 from google.protobuf import struct_pb2 as google_dot_protobuf_dot_struct__pb2
 
 
-DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0c\x61\x63tion.proto\x12\x1bviamlabs.services.action.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x1cgoogle/protobuf/struct.proto\"\"\n\x0cStartRequest\x12\x12\n\x04name\x18\x01 \x01(\tR\x04name\"#\n\rStartResponse\x12\x12\n\x04text\x18\x01 \x01(\tR\x04text\"!\n\x0bStopRequest\x12\x12\n\x04name\x18\x01 \x01(\tR\x04name\"\"\n\x0cStopResponse\x12\x12\n\x04text\x18\x01 \x01(\tR\x04text\"&\n\x10IsRunningRequest\x12\x12\n\x04name\x18\x01 \x01(\tR\x04name\"-\n\x11IsRunningResponse\x12\x18\n\x07running\x18\x01 \x01(\x08R\x07running\"#\n\rStatusRequest\x12\x12\n\x04name\x18\x01 \x01(\tR\x04name\"\xb8\x01\n\x06Status\x12\x12\n\x04name\x18\x01 \x01(\tR\x04name\x12G\n\x06status\x18\x02 \x03(\x0b\x32/.viamlabs.services.action.v1.Status.StatusEntryR\x06status\x1aQ\n\x0bStatusEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12,\n\x05value\x18\x02 \x01(\x0b\x32\x16.google.protobuf.ValueR\x05value:\x02\x38\x01\"M\n\x0eStatusResponse\x12;\n\x06status\x18\x01 \x03(\x0b\x32#.viamlabs.services.action.v1.StatusR\x06status2\xec\x04\n\rActionService\x12\x90\x01\n\x05Start\x12).viamlabs.services.action.v1.StartRequest\x1a*.viamlabs.services.action.v1.StartResponse\"0\x82\xd3\xe4\x93\x02*\"(/acme/api/v1/service/action/{name}/start\x12\x8c\x01\n\x04Stop\x12(.viamlabs.services.action.v1.StopRequest\x1a).viamlabs.services.action.v1.StopResponse\"/\x82\xd3\xe4\x93\x02)\"\'/acme/api/v1/service/action/{name}/stop\x12\xa1\x01\n\tIsRunning\x12-.viamlabs.services.action.v1.IsRunningRequest\x1a..viamlabs.services.action.v1.IsRunningResponse\"5\x82\xd3\xe4\x93\x02/\"-/acme/api/v1/service/action/{name}/is_running\x12\x94\x01\n\x06Status\x12*.viamlabs.services.action.v1.StatusRequest\x1a+.viamlabs.services.action.v1.StatusResponse\"1\x82\xd3\xe4\x93\x02+\")/acme/api/v1/service/action/{name}/statusB\x0eZ\x0c./action-apib\x06proto3')
+DESCRIPTOR = _descriptor_pool.Default().AddSerializedFile(b'\n\x0c\x61\x63tion.proto\x12\x1bviamlabs.services.action.v1\x1a\x1cgoogle/api/annotations.proto\x1a\x1cgoogle/protobuf/struct.proto\"\"\n\x0cStartRequest\x12\x12\n\x04name\x18\x01 \x01(\tR\x04name\"#\n\rStartResponse\x12\x12\n\x04text\x18\x01 \x01(\tR\x04text\"!\n\x0bStopRequest\x12\x12\n\x04name\x18\x01 \x01(\tR\x04name\"\"\n\x0cStopResponse\x12\x12\n\x04text\x18\x01 \x01(\tR\x04text\"&\n\x10IsRunningRequest\x12\x12\n\x04name\x18\x01 \x01(\tR\x04name\"-\n\x11IsRunningResponse\x12\x18\n\x07running\x18\x01 \x01(\x08R\x07running\"#\n\rStatusRequest\x12\x12\n\x04name\x18\x01 \x01(\tR\x04name\"\xbc\x01\n\x0eStatusResponse\x12U\n\x08readings\x18\x01 \x03(\x0b\x32\x39.viamlabs.services.action.v1.StatusResponse.ReadingsEntryR\x08readings\x1aS\n\rReadingsEntry\x12\x10\n\x03key\x18\x01 \x01(\tR\x03key\x12,\n\x05value\x18\x02 \x01(\x0b\x32\x16.google.protobuf.ValueR\x05value:\x02\x38\x01\x32\xec\x04\n\rActionService\x12\x90\x01\n\x05Start\x12).viamlabs.services.action.v1.StartRequest\x1a*.viamlabs.services.action.v1.StartResponse\"0\x82\xd3\xe4\x93\x02*\"(/acme/api/v1/service/action/{name}/start\x12\x8c\x01\n\x04Stop\x12(.viamlabs.services.action.v1.StopRequest\x1a).viamlabs.services.action.v1.StopResponse\"/\x82\xd3\xe4\x93\x02)\"\'/acme/api/v1/service/action/{name}/stop\x12\xa1\x01\n\tIsRunning\x12-.viamlabs.services.action.v1.IsRunningRequest\x1a..viamlabs.services.action.v1.IsRunningResponse\"5\x82\xd3\xe4\x93\x02/\"-/acme/api/v1/service/action/{name}/is_running\x12\x94\x01\n\x06Status\x12*.viamlabs.services.action.v1.StatusRequest\x1a+.viamlabs.services.action.v1.StatusResponse\"1\x82\xd3\xe4\x93\x02+\")/acme/api/v1/service/action/{name}/statusB\x0eZ\x0c./action-apib\x06proto3')
 
 _globals = globals()
 _builder.BuildMessageAndEnumDescriptors(DESCRIPTOR, _globals)
@@ -23,8 +23,8 @@ _builder.BuildTopDescriptorsAndMessages(DESCRIPTOR, 'action_pb2', _globals)
 if _descriptor._USE_C_DESCRIPTORS == False:
   DESCRIPTOR._options = None
   DESCRIPTOR._serialized_options = b'Z\014./action-api'
-  _STATUS_STATUSENTRY._options = None
-  _STATUS_STATUSENTRY._serialized_options = b'8\001'
+  _STATUSRESPONSE_READINGSENTRY._options = None
+  _STATUSRESPONSE_READINGSENTRY._serialized_options = b'8\001'
   _ACTIONSERVICE.methods_by_name['Start']._options = None
   _ACTIONSERVICE.methods_by_name['Start']._serialized_options = b'\202\323\344\223\002*\"(/acme/api/v1/service/action/{name}/start'
   _ACTIONSERVICE.methods_by_name['Stop']._options = None
@@ -47,12 +47,10 @@ if _descriptor._USE_C_DESCRIPTORS == False:
   _globals['_ISRUNNINGRESPONSE']._serialized_end=334
   _globals['_STATUSREQUEST']._serialized_start=336
   _globals['_STATUSREQUEST']._serialized_end=371
-  _globals['_STATUS']._serialized_start=374
-  _globals['_STATUS']._serialized_end=558
-  _globals['_STATUS_STATUSENTRY']._serialized_start=477
-  _globals['_STATUS_STATUSENTRY']._serialized_end=558
-  _globals['_STATUSRESPONSE']._serialized_start=560
-  _globals['_STATUSRESPONSE']._serialized_end=637
-  _globals['_ACTIONSERVICE']._serialized_start=640
-  _globals['_ACTIONSERVICE']._serialized_end=1260
+  _globals['_STATUSRESPONSE']._serialized_start=374
+  _globals['_STATUSRESPONSE']._serialized_end=562
+  _globals['_STATUSRESPONSE_READINGSENTRY']._serialized_start=479
+  _globals['_STATUSRESPONSE_READINGSENTRY']._serialized_end=562
+  _globals['_ACTIONSERVICE']._serialized_start=565
+  _globals['_ACTIONSERVICE']._serialized_end=1185
 # @@protoc_insertion_point(module_scope)
