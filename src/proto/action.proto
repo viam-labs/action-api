@@ -28,7 +28,7 @@ service ActionService {
 
   rpc Status(StatusRequest) returns (StatusResponse) {
     option (google.api.http) = {
-      post: "/acme/api/v1/service/action/{name}/status"
+      get: "/acme/api/v1/service/action/{name}/status"
     };
   }
 }

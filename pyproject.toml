@@ -1,6 +1,6 @@
 [project]
 name = "action_api"
-version = "0.0.8"
+version = "0.0.9"
 authors = [
   { name="Matt Vella", email="mcvella@gmail.com" },
 ]
