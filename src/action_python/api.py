@@ -18,7 +18,6 @@ class Action(ServiceBase):
 
     SUBTYPE: Final = Subtype("viam-labs", RESOURCE_TYPE_SERVICE, "action")
 
-    # update with actual API methods
     @abc.abstractmethod
     async def start(self) -> str:
         ...
@@ -29,6 +28,7 @@ class Action(ServiceBase):
     async def is_running(self) -> bool:
         ...
 
+    @abc.abstractmethod
     async def status(self) -> Mapping[str, Any]:
         ...
 

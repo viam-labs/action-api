@@ -6,6 +6,7 @@ import (
 
 	"go.viam.com/rdk/logging"
 	"go.viam.com/utils/rpc"
+	"google.golang.org/protobuf/types/known/structpb"
 
 	pb "github.com/viam-labs/action-api/src/action_go/grpc"
 	"go.viam.com/rdk/resource"
@@ -49,7 +50,7 @@ type Action interface {
 	Start(ctx context.Context) error
 	Stop(ctx context.Context) error
 	IsRunning(ctx context.Context) (bool, error)
-	Status(ctx context.Context) ([]*pb.Status, error)
+	Status(ctx context.Context) (map[string]*structpb.Value, error)
 }
 
 // serviceServer implements the Action RPC service from action.proto.
@@ -175,7 +176,7 @@ func (c *client) IsRunning(ctx context.Context) (bool, error) {
 	return resp.Running, nil
 }
 
-func (c *client) Status(ctx context.Context) ([]*pb.Status, error) {
+func (c *client) Status(ctx context.Context) (map[string]*structpb.Value, error) {
 	resp, err := c.client.Status(ctx, &pb.StatusRequest{
 		Name: c.name,
 	})
