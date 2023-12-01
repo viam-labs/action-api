@@ -29,7 +29,7 @@ class Action(ServiceBase):
     async def is_running(self) -> bool:
         ...
 
-    async def status(self) -> dict:
+    async def status(self) -> Mapping[str, Any]:
         ...
 
 class ActionRPCService(ActionServiceBase, ResourceRPCServiceBase):
