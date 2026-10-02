@@ -5,7 +5,7 @@ from grpclib.client import Channel
 from grpclib.server import Stream
 
 from viam.resource.rpc_service_base import ResourceRPCServiceBase
-from viam.resource.types import RESOURCE_TYPE_SERVICE, Subtype
+from viam.resource.types import RESOURCE_TYPE_SERVICE, API as ResourceAPI
 from viam.services.service_base import ServiceBase
 from viam.utils import sensor_readings_native_to_value, sensor_readings_value_to_native
 
@@ -16,7 +16,9 @@ from .grpc.action_pb2 import StartRequest, StartResponse, StopRequest, StopRespo
 
 class Action(ServiceBase):
 
-    SUBTYPE: Final = Subtype("viam-labs", RESOURCE_TYPE_SERVICE, "action")
+    API: Final = ResourceAPI("viam-labs", RESOURCE_TYPE_SERVICE, "action")
+    # Modules released before the SDK rename still pass Action.SUBTYPE.
+    SUBTYPE: Final = API
 
     @abc.abstractmethod
     async def start(self) -> str:
